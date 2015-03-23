@@ -3,52 +3,47 @@ package ecford.hghs.cs2.sorting;
 /*Merge sort class for sorting ints
  *@author Elliot Ford
  */
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.List;
 
 public class MergeSortInt {
 	private int[] array;
-	private int[] sortedArray;
 
 	public MergeSortInt(int[] array) {
 		this.array = array;
-		sortedArray = new int[array.length];
-		sort(0, array.length);
+		sort(0, array.length-1);
 	}
 
 	private void sort(int lower, int upper) {
-		if (upper - lower < 2) {
-			return;
+		if (lower < upper) {
+			int middle = lower + (upper - lower) / 2;
+			sort(lower, middle);
+			sort(middle + 1, upper);
+			sortsort(lower, middle, upper);
 		}
-		int i = lower;
-		int j = upper;
-		int middle = lower + (upper - lower) / 2;
-		sort(lower, middle);
-		sort(middle, upper);
-		sortsort(lower, middle, upper);
 	}
 
-	private void sortsort(int lower, int middle, int upper) { // top most value
-																// is inclusive
-		List<Integer> array0 = new ArrayList<Integer>();
-		List<Integer> array1 = new ArrayList<Integer>();
-		for (int i = lower; i < upper; i++) {
-			if (i < middle) {
-				array0.add(array[i]);
+	private void sortsort(int lower, int middle, int upper) {
+		int[] array0 = array.clone();
+		int i = lower;
+		int j = middle + 1;
+		int k = lower; // position in original array to read to
+
+		while (i <= middle && j <= upper) {// i is the left array scanner, j is
+											// the right scanner
+			if (array0[i] <= array0[j]) {
+				array[k] = array0[i];
+				i++;
 			} else {
-				array1.add(array[i]);
+				array[k] = array0[j];
+				j++;
 			}
-		}
-		int counter = 0;
-		while (!array0.isEmpty() || !array1.isEmpty()) {
-			while (array0.get(0) > array1.get(0)
-					&& (counter < array.length || counter < array1.size())) {
-				array[lower + counter] = array1.get(0);
-				array1.remove(0);
-			}
+			k++;
 
 		}
+		while (i <= middle) {
+		      array[k] = array0[i];
+		      k++;
+		      i++;
+		    }
 	}
 
 	public int[] getSorted() {
@@ -56,7 +51,7 @@ public class MergeSortInt {
 	}
 
 	public static void main(String[] args) {
-		int[] input = new int[] { 1, 18, 7, 19, 16 };
+		int[] input = new int[] { 1, 18, 7, 19, 16,42,89,91,777,666,351, };
 		MergeSortInt sorter = new MergeSortInt(input);
 		int[] output = sorter.getSorted();
 		System.out.print("[");
