@@ -19,6 +19,7 @@ package ecford.hghs.cs2.gridworld.examples;
  */
 
 import info.gridworld.actor.ActorWorld;
+import info.gridworld.actor.Bug;
 import info.gridworld.grid.Location;
 
 import java.awt.Color;
@@ -30,11 +31,13 @@ import java.awt.Color;
 public class BoxBugRunner {
 	public static void main(String[] args) {
 		ActorWorld world = new ActorWorld();
-		BoxBug alice = new BoxBug(6);
-		alice.setColor(Color.ORANGE);
-		BoxBug bob = new BoxBug(3);
-		world.add(new Location(7, 8), alice);
-		world.add(new Location(5, 5), bob);
+		//Bug alice = new BoxBug(3);
+		//alice.setColor(Color.ORANGE);
+		//Bug bob = new SpiralBug(3);
+		Bug joe = new CircleBug(1);
+		//world.add(new Location(7, 8), alice);
+		//world.add(new Location(5, 5), bob);
+		world.add(joe);
 		world.show();
 	}
 }
