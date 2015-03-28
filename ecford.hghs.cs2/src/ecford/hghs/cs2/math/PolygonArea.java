@@ -1,6 +1,7 @@
 package ecford.hghs.cs2.math;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PolygonArea {
 	public PolygonArea() {
@@ -8,7 +9,7 @@ public class PolygonArea {
 	}
 
 	@SuppressWarnings("rawtypes")
-	private static boolean hasNoPolygon(ArrayList a) {
+	private static boolean hasNoPolygon(List a) {
 		if (a.size() < 3) {
 			return true;
 		}
@@ -24,11 +25,11 @@ public class PolygonArea {
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	private static double triangleArea(ArrayList p) {
+	private static double triangleArea(List p) {
 		if (hasNoPolygon(p)) {
 			return 0;
 		}
-		ArrayList temp = new ArrayList(p);
+		List temp = new ArrayList(p);
 		temp.remove(1);
 		return triangleArea(((Coordinates) p.get(0)).getX(),
 				((Coordinates) p.get(0)).getY(),
@@ -40,7 +41,10 @@ public class PolygonArea {
 	}
 
 	@SuppressWarnings("rawtypes")
-	public static double polygonArea(ArrayList p) {
+	public static double polygonArea(List p) {
+		if(p == null) {
+			return 0;
+		}
 		if (hasNoPolygon(p)) {
 			return 0;
 		}
