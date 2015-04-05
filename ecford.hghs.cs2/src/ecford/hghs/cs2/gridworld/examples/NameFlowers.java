@@ -1,21 +1,16 @@
 package ecford.hghs.cs2.gridworld.examples;
 
-import java.awt.Color;
-
-import ecford.hghs.cs2.reader.*;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.Scanner;
-
 import info.gridworld.actor.Actor;
 import info.gridworld.actor.ActorWorld;
-import info.gridworld.actor.Bug;
 import info.gridworld.actor.Flower;
 import info.gridworld.grid.Grid;
 import info.gridworld.grid.Location;
 import info.gridworld.grid.UnboundedGrid;
+
+import java.awt.Color;
+import java.io.IOException;
+
+import ecford.hghs.cs2.reader.CreateArrayFromFile;
 
 public class NameFlowers {
 	private int[][][] letterStoring;
