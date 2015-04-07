@@ -37,7 +37,7 @@ public class Jumper extends Actor {
 		Location currentPlace = getLocation();
 		Location jumpOver = currentPlace.getAdjacentLocation(getDirection());
 		Location nextPlace = jumpOver.getAdjacentLocation(getDirection());
-		Grid<Actor> testGrid = getGrid(); // store local grid to work with		
+		Grid<Actor> testGrid = getGrid(); // store local grid to work with
 		if (testGrid == null) {
 			return false;
 		}
@@ -48,7 +48,7 @@ public class Jumper extends Actor {
 			return false;
 		}
 		Actor test = testGrid.get(nextPlace);
-		if(test != null) {
+		if (test != null) {
 			return false;
 		}
 		return true;

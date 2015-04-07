@@ -15,7 +15,7 @@ import ecford.hghs.cs2.reader.CreateArrayFromFile;
 public class NameFlowers {
 	private int[][][] letterStoring;
 	private Location cursorPos;
-	private Grid<Actor> world;
+	private ActorWorld world;
 	private String fileName;
 	private CreateArrayFromFile fileReader;
 
@@ -25,7 +25,8 @@ public class NameFlowers {
 
 	public NameFlowers(int r, int c) throws IOException {
 		cursorPos = new Location(r, c);
-		world = new UnboundedGrid<Actor>();
+		world = new ActorWorld(new UnboundedGrid<Actor>());
+		world.show();
 		fileName = "letterToGrid";
 		fileReader = new CreateArrayFromFile(fileName);
 		String[] temp = fileReader.getArray();
@@ -56,7 +57,7 @@ public class NameFlowers {
 	}
 
 	private void placeFlower(Location loc) {
-		world.put(loc, new Flower(new Color(0).BLACK));
+		world.add(loc, new Flower(new Color(0).BLACK));
 	}
 
 	public void write(String input) {
@@ -68,8 +69,7 @@ public class NameFlowers {
 			cursorPos = new Location(cursorPos.getRow(), cursorPos.getCol() + 6);
 			write(name.substring(1));
 		} else {
-			ActorWorld foo = new ActorWorld(world);
-			foo.show();
+			return;
 		}
 	}
 
