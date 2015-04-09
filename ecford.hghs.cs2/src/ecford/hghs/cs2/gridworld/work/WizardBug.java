@@ -1,4 +1,4 @@
-package ecford.hghs.cs2.gridworld.examples;
+package ecford.hghs.cs2.gridworld.work;
 
 import info.gridworld.actor.Actor;
 import info.gridworld.actor.ActorWorld;

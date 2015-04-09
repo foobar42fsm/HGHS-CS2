@@ -1,9 +1,8 @@
-package ecford.hghs.cs2.gridworld.examples;
+package ecford.hghs.cs2.gridworld.work;
 
 import info.gridworld.actor.Actor;
 import info.gridworld.actor.ActorWorld;
 import info.gridworld.actor.Flower;
-import info.gridworld.grid.Grid;
 import info.gridworld.grid.Location;
 import info.gridworld.grid.UnboundedGrid;
 
@@ -56,6 +55,7 @@ public class NameFlowers {
 		return 0;
 	}
 
+	@SuppressWarnings("static-access")
 	private void placeFlower(Location loc) {
 		world.add(loc, new Flower(new Color(0).BLACK));
 	}

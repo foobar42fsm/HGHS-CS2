@@ -1,10 +1,8 @@
-package ecford.hghs.cs2.gridworld.examples;
+package ecford.hghs.cs2.gridworld.work;
 
 
 import info.gridworld.actor.ActorWorld;
 import info.gridworld.grid.Location;
-
-import java.awt.Color;
 
 /**
  * This class runs a world that contains box bugs. <br />

@@ -1,7 +1,6 @@
-package ecford.hghs.cs2.gridworld.examples;
+package ecford.hghs.cs2.gridworld.work;
 
 import info.gridworld.actor.Bug;
-import info.gridworld.grid.Location;
 
 import java.awt.Color;
 
@@ -36,9 +35,5 @@ public class CircleBug extends Bug {
 				length = 0;
 			}
 		}
-	}
-
-	private void findNextlocation() {
-
 	}
 }

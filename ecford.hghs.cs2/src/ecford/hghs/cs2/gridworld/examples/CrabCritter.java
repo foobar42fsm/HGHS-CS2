@@ -104,7 +104,7 @@ public class CrabCritter extends Critter
     public ArrayList<Location> getLocationsInDirections(int[] directions)
     {
         ArrayList<Location> locs = new ArrayList<Location>();
-        Grid gr = getGrid();
+        Grid<Actor> gr = getGrid();
         Location loc = getLocation();
     
         for (int d : directions)

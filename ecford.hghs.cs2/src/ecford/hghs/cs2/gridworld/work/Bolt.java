@@ -1,4 +1,4 @@
-package ecford.hghs.cs2.gridworld.examples;
+package ecford.hghs.cs2.gridworld.work;
 
 import info.gridworld.actor.Actor;
 import info.gridworld.actor.ActorWorld;
@@ -48,7 +48,7 @@ public class Bolt extends Flower {
 	}
 
 	private void explode() {
-		Grid<Actor> testGrid = getGrid();
+		//Grid<Actor> testGrid = getGrid();
 		for (int i = 0; i < 5; i++) { // rows
 			for (int q = 0; q < 5; q++) { // columns
 

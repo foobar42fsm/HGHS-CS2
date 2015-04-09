@@ -18,6 +18,7 @@ public class CreateArrayFromFile {
 		File input = new File(fileName);
 		Scanner words = new Scanner(input);
 		while (words.hasNextLine() == true) {
+			@SuppressWarnings("unused")
 			String line = words.nextLine();
 			count++;
 		}
@@ -41,6 +42,5 @@ public class CreateArrayFromFile {
 	}
 
 	public static void main(String[] args) throws IOException {
-		CreateArrayFromFile foo = new CreateArrayFromFile("words.txt");
 	}
 }

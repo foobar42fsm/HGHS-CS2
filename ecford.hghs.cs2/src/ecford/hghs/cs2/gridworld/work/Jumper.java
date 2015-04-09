@@ -1,4 +1,4 @@
-package ecford.hghs.cs2.gridworld.examples;
+package ecford.hghs.cs2.gridworld.work;
 
 import java.awt.Color;
 
