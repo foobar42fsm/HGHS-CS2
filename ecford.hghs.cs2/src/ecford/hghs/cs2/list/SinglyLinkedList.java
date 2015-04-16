@@ -1,6 +1,6 @@
 package ecford.hghs.cs2.list;
 
-public class SinglyLinkedList {
+public class SinglyLinkedList implements LinkedList {
 	protected ListNode head;
 	protected int nodeCount;
 
@@ -23,6 +23,7 @@ public class SinglyLinkedList {
 		}
 	}
 
+	@Override
 	public void addEnd(Object v) {
 		ListNode nx = new ListNode(v, null);
 		if (nodeCount != 0) {
@@ -37,13 +38,15 @@ public class SinglyLinkedList {
 		nodeCount++;
 	}
 
+	@Override
 	public void addFirst(Object v) {
 		ListNode nx = new ListNode(v, head);
 		head = nx;
 		nodeCount++;
 	}
 
-	public void addAt(Object v, int loc) {
+	@Override
+	public void add(Object v, int loc) {
 		ListNode nx = new ListNode(v, null);
 		if (nodeCount != 0) {
 			int pos = 0;
@@ -60,6 +63,7 @@ public class SinglyLinkedList {
 		nodeCount++;
 	}
 
+	@Override
 	public Object removeFirst() {
 		Object retX = head.getValue();
 		if (head == null) {
@@ -75,6 +79,7 @@ public class SinglyLinkedList {
 		return retX;
 	}
 
+	@Override
 	public Object removeEnd() {
 		if (nodeCount < 1) {
 			head = null;
@@ -98,6 +103,7 @@ public class SinglyLinkedList {
 		return retX;
 	}
 
+	@Override
 	public Object remove(int index) {
 		if (index > nodeCount) {
 			return null;
@@ -119,14 +125,17 @@ public class SinglyLinkedList {
 		return retX;
 	}
 
+	@Override
 	public Object getValueHead() {
 		return head.getValue();
 	}
 
+	@Override
 	public ListNode getHead() {
 		return head;
 	}
 
+	@Override
 	public int size() {
 		return nodeCount;
 	}
@@ -135,7 +144,7 @@ public class SinglyLinkedList {
 		SinglyLinkedList test = new SinglyLinkedList();
 		test.addEnd("hello");
 		test.addEnd("hi");
-		test.addAt("boo", 1);
+		test.add("boo", 1);
 		System.out.println(test.removeEnd());
 		System.out.println(test.getValueHead());
 		System.out.println(test.getHead().getNext().getValue());

@@ -5,8 +5,7 @@ public class ListNode {
 	private ListNode next;
 
 	public ListNode(Object v) {
-		value = v;
-		next = null;
+		this(v,null);
 	}
 
 	public ListNode (Object v, ListNode nx) {
