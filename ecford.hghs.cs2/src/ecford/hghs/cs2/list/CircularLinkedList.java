@@ -18,8 +18,10 @@ public class CircularLinkedList {
 		((DoubleListNode) temp.getPrevious()).setNext(temp);
 	}
 
-	public DoubleListNode removeAt(DoubleListNode node) {
-		return node;
-
+	public void remove(DoubleListNode node) {
+		((DoubleListNode) node.getPrevious()).setNext(node.getNext());
+		((DoubleListNode) node.getNext()).setPrevious(node.getPrevious());
+		node.setNext(null);
+		node.setPrevious(null);
 	}
 }
