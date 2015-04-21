@@ -16,8 +16,8 @@ public class SinglyLinkedList implements LinkedList {
 
 	public SinglyLinkedList(Object[] array) {
 		head = new ListNode(array[0], null);
-		if (array.length > 1) {
-			for (int i = 1; i < array.length; i++) {
+		if (array.length > 0) {
+			for (int i = 0; i < array.length; i++) {
 				addEnd(array[i]);
 			}
 		}
