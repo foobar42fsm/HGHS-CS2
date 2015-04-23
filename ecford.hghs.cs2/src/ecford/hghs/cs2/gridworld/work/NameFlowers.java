@@ -8,6 +8,7 @@ import info.gridworld.grid.UnboundedGrid;
 
 import java.awt.Color;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import ecford.hghs.cs2.reader.CreateArrayFromFile;
 
@@ -46,20 +47,6 @@ public class NameFlowers {
 
 	}
 
-	private int findArrayPos(String input) { // TODO make this work
-		String temp = input.substring(input.indexOf("«") + 1,
-				input.indexOf("»"));
-		if (temp != null) {
-			return Integer.parseInt(temp);
-		}
-		return 0;
-	}
-
-	@SuppressWarnings("static-access")
-	private void placeFlower(Location loc) {
-		world.add(loc, new Flower(new Color(0).BLACK));
-	}
-
 	public void write(String input) {
 		String name = input.toLowerCase();
 		if (name.length() > 0) {
@@ -73,16 +60,63 @@ public class NameFlowers {
 		}
 	}
 
+	public void clean() {
+		for (Location foo : world.getGrid().getOccupiedLocations()) {
+			world.remove(foo);
+		}
+	}
+
+	public void clean(int r1, int r2, int c1, int c2) {
+		int row = 0;
+		int column = 0;
+
+		for (Location foo : world.getGrid().getOccupiedLocations()) {
+			row = foo.getRow();
+			column = foo.getCol();
+			if (row >= r1 && row < r2 && column >= c1 && column < c2) {
+				world.remove(foo);
+			}
+		}
+	}
+
+	public void shift() {
+		ArrayList<Location> foo = world.getGrid().getOccupiedLocations();
+		for (int i = foo.size(); i >= 0; i--) {
+		}
+	}
+
+	public Location getCursorPos() {
+		return cursorPos;
+	}
+
+	public void moveCursor(int r, int c) {
+		cursorPos = new Location(r, c);
+	}
+
+	@SuppressWarnings("static-access")
+	protected void placeObject(Location loc) {
+		world.add(loc, new Flower(new Color(0).BLACK));
+	}
+
+	private int findArrayPos(String input) { // TODO make this work
+		String temp = input.substring(input.indexOf("«") + 1,
+				input.indexOf("»"));
+		if (temp != null) {
+			return Integer.parseInt(temp);
+		}
+		return 0;
+	}
+
 	private void printChar(String firstLetter) {
 		int charNum = charToIndexValue(firstLetter);
-		if(charNum == 13) {
-			cursorPos = new Location(cursorPos.getRow()+9, -6);
+		if (charNum == 13) {
+			cursorPos = new Location(cursorPos.getRow() + 9, -6);
 			return;
 		}
 		for (int i = 0; i < 8; i++) {
 			for (int q = 0; q < 5; q++) {
 				if (letterStoring[charNum][i][q] == 1) {
-					placeFlower(new Location(cursorPos.getRow() + i,
+					placeObject(new Location(cursorPos.getRow() + i,
 							cursorPos.getCol() + q));
 				}
 			}
@@ -97,5 +131,6 @@ public class NameFlowers {
 	public static void main(String[] args) throws IOException {
 		NameFlowers boom = new NameFlowers();
 		boom.write("abcdefghijklmnopqrstuvwxyz\r!@#$%^&*()_+`\\\"\'");
+		boom.clean(0, 3, 0, 3);
 	}
 }
