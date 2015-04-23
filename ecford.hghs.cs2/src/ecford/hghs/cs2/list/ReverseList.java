@@ -1,5 +1,7 @@
 package ecford.hghs.cs2.list;
 
+import org.apache.commons.lang3.ArrayUtils;
+
 public class ReverseList {
 	SinglyLinkedList linkedList;
 	SinglyLinkedList flippedLinkedList;
@@ -34,8 +36,8 @@ public class ReverseList {
 	}
 
 	public static void main(String[] args) {
-		String[] input = new String[] { "man", "dog", "gas" };
-		ReverseList test = new ReverseList(input);
+		Character[] input = new Character[] { 'd', 'o', 'g' };
+		ReverseList test = new ReverseList(ArrayUtils.toObject("dog".toCharArray()));
 		System.out.println(test.flippedToString());
 	}
 }

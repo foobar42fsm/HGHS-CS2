@@ -9,7 +9,14 @@ public class NameBug extends Bug {
 	public NameBug(Color color) {
 		super(color);
 	}
-	
+
+	public void act() {
+		if (canMove())
+			move();
+		else
+			;
+
+	}
 	
 
 }
