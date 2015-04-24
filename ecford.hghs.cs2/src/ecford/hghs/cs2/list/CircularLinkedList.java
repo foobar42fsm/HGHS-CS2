@@ -16,6 +16,11 @@ public class CircularLinkedList {
 		DoubleListNode temp = new DoubleListNode(value, node, node.getNext());
 		((DoubleListNode) node.getNext()).setPrevious(temp);
 		((DoubleListNode) temp.getPrevious()).setNext(temp);
+		nodeCount++;
+	}
+
+	public void addLast(Object value) {
+		addAfter((DoubleListNode) header.getPrevious(), value);
 	}
 
 	public void remove(DoubleListNode node) {
@@ -23,5 +28,15 @@ public class CircularLinkedList {
 		((DoubleListNode) node.getNext()).setPrevious(node.getPrevious());
 		node.setNext(null);
 		node.setPrevious(null);
+		nodeCount--;
 	}
+
+	public DoubleListNode getHeader() {
+		return header;
+	}
+
+	public void setHeader(DoubleListNode header) {
+		this.header = header;
+	}
+
 }
