@@ -16,6 +16,14 @@ public class DoublyLinkedList implements LinkedList {
 		this.nodeCount = 1;
 	}
 
+	public void DoublyLinkedListArray(Object[] array) {
+		if (array.length > 0) {
+			for (int i = 0; i < array.length; i++) {
+				addEnd(array[i]);
+			}
+		}
+	}
+
 	@Override
 	public void addEnd(Object v) {
 		if (nodeCount != 0) {
@@ -34,7 +42,9 @@ public class DoublyLinkedList implements LinkedList {
 	@Override
 	public void addFirst(Object v) {
 		DoubleListNode foo = new DoubleListNode(v, head, null);
-		head.setPrevious(foo);
+		if (head != null) {
+			head.setPrevious(foo);
+		}
 		head = foo;
 		nodeCount++;
 	}
@@ -55,39 +65,63 @@ public class DoublyLinkedList implements LinkedList {
 
 	@Override
 	public Object removeFirst() {
-		head = (DoubleListNode) head.getNext();
-		head.setPrevious(null);
-		return null;
+		Object retX = null;
+		if (head != null) {
+			retX = head.getValue();
+			head = (DoubleListNode) head.getNext();
+			if (head != null) {
+				head.setPrevious(null);
+			}
+			nodeCount--;
+		}
+		return retX;
 	}
 
 	@Override
 	public Object removeEnd() {
-		// TODO Auto-generated method stub
-		return null;
+		return remove(nodeCount-1);
 	}
 
 	@Override
 	public Object remove(int index) {
-		// TODO Auto-generated method stub
-		return null;
+		if (nodeCount < 1) {
+			head = null;
+			return null;
+		}
+		if (nodeCount < 2) {
+			nodeCount--;
+			Object retX = head.getValue();
+			head.setNext(null);
+			return retX;
+		}
+		int pos = 0;
+		ListNode temp = head;
+		while (pos < (nodeCount - 2)) {
+			temp = temp.getNext();
+			pos++;
+		}
+		Object retX = temp.getNext().getValue();
+		if (temp.getNext().getNext() != null) {
+			((DoubleListNode) temp.getNext().getNext()).setPrevious(temp);
+		}
+		temp.setNext(null);
+		nodeCount--;
+		return retX;
 	}
 
 	@Override
 	public Object getValueHead() {
-		// TODO Auto-generated method stub
-		return null;
+		return head.getValue();
 	}
 
 	@Override
 	public ListNode getHead() {
-		// TODO Auto-generated method stub
-		return null;
+		return head;
 	}
 
 	@Override
 	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
+		return nodeCount;
 	}
 
 }
