@@ -10,6 +10,13 @@ public class CircularLinkedList {
 		header.setNext(header);
 		nodeCount = 0;
 	}
+	
+	public CircularLinkedList(Object input) {
+		header = new DoubleListNode(input);
+		header.setPrevious(header);
+		header.setNext(header);
+		nodeCount = 1;
+	}
 
 	// precondition: input node is exists in List
 	public void addAfter(DoubleListNode node, Object value) {
@@ -21,6 +28,10 @@ public class CircularLinkedList {
 
 	public void addLast(Object value) {
 		addAfter((DoubleListNode) header.getPrevious(), value);
+	}
+
+	public int getNodeCount() {
+		return nodeCount;
 	}
 
 	public void remove(DoubleListNode node) {
