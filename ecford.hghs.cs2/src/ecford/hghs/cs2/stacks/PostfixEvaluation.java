@@ -4,7 +4,6 @@ public class PostfixEvaluation {
 	private String postfix;
 	private String prefix;
 	private char[] operators;
-	private int value;
 
 	public PostfixEvaluation(String postfix) {
 		super();
@@ -13,11 +12,18 @@ public class PostfixEvaluation {
 		convert();
 	}
 
-	private void convert() {
+	private void convert() { // this just needs to burn in hell, needs so much
+								// work, so much.
 		StringBuilder value = new StringBuilder();
-		for (int i = 0, z = postfix.length(); i < postfix.length(); i++, z--) {
-			value.append(postfix.charAt(findDigit(postfix, i)));
+		for (int i = 0; i < postfix.length(); i++) {
+			if (findDigit(postfix, i) != -1) {
+				value.append(postfix.charAt(findDigit(postfix, i)));
+			}
+			if (findOperator(postfix, i) != -1) {
+				value.append(postfix.charAt(findOperator(postfix, i)));
+			}
 		}
+		prefix = value.toString();
 
 	}
 
@@ -52,12 +58,26 @@ public class PostfixEvaluation {
 	}
 
 	private boolean isOperator(char input) {
-		boolean retX = false;
 		for (int i = 0; i < operators.length; i++) {
 			if (input == operators[i]) {
 				return true;
 			}
 		}
 		return false;
+	}
+
+	public String getPostfix() {
+		return postfix;
+	}
+
+	public String getPrefix() {
+		return prefix;
+	}
+
+	public static void main(String[] args) {
+		PostfixEvaluation test = new PostfixEvaluation("33+");
+		System.out.println(test.getPrefix());
+		System.out.println(test.getPostfix());
+
 	}
 }
