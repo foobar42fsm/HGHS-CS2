@@ -22,7 +22,8 @@ public class BinarySearchTree<E> extends BinaryTree {
 			if (add.compareTo(temp.getValue()) > 0) {
 
 			}else {
-				TreeNode<E> input = new TreeNode<E>(, left, right)
+				//TreeNode<E> input = new TreeNode<E>(, left, right);
+				//doesn't work
 			}
 		}
 	}
